@@ -34,7 +34,7 @@ export default function RealEstateComponent() {
               <div className="col-span-3 row-start-3 row-span-3 col-start-4 relative">
                 <div className="relative w-full h-full">
                   <img
-                    src="https://i.pinimg.com/736x/c3/b2/32/c3b232240e3942a62875aa1d24e873f0.jpg"
+                    src="/Hello.jpg"
                     alt="Modern house"
                     className="w-full h-full object-cover rounded-xl"
                   />
