@@ -51,7 +51,7 @@ export default function Header() {
         <div className={`flex items-center justify-between ${scrolled ? "flex-row" : ""}`}>
           {/* Logo */}
 
-          <a href="#" className={`${scrolled ? "text-white flex flex-row items-center" : "flex flex-col items-center"} gap-2 transition`}>
+          <a href="#" className={`${scrolled ? "text-white flex flex-row items-center" : "flex flex-nl items-center"} gap-2 transition`}>
             <img src="/Logo.png" className="md:w-10 md:h-10 w-8 h-8" alt="" />
             <h1 className={`${scrolled ? "pt-3 hidden md:block" : "ps-3"} md:text-lg font-bold`}>Islamabad Link</h1>
           </a>

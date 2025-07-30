@@ -12,7 +12,7 @@ import BecomeAgent from "./components/BecomeAgent"
 import RecentArticles from "./components/RecentArticles"
 import Newsletter from "./components/Newsletter"
 import Footer from "./components/Footer"
-import Header from "./components/header";
+import Header from "./components/Header";
 
 const App = () => {
   return (
