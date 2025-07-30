@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Figtree';
+  src: url('/Figtree-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Figtree' !important;
+}
+
+
+.bg-yellow{
+  background-color: #e7c873;
+}
+
+.text-yellow {
+  color: #e7c873;
+}
