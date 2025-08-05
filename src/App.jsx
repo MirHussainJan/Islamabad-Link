@@ -13,6 +13,7 @@ import RecentArticles from "./components/RecentArticles"
 import Newsletter from "./components/Newsletter"
 import Footer from "./components/Footer"
 import Header from "./components/Header";
+import RecentHighlights from "./components/RecentArticles";
 
 const App = () => {
   return (
@@ -26,7 +27,7 @@ const App = () => {
       <DiscoverSection />
       <BecomeAgent id="about" />
       <Testimonials />
-      <RecentArticles />
+      <RecentHighlights/>
       <Footer />
       {/* <ExclusiveProperties />
       <Newsletter /> */}

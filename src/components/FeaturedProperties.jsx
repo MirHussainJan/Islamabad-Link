@@ -134,136 +134,236 @@ export default function FeaturedProperties({ id }) {
             </p>
 
             <div className="relative">
-              <Swiper
-                modules={[Navigation, Pagination]}
-                spaceBetween={24}
-                slidesPerView={1}
-                navigation={{
-                  nextEl: ".custom-swiper-next",
-                  prevEl: ".custom-swiper-prev",
-                }}
-                pagination={{ clickable: true }}
-                breakpoints={{
-                  640: { slidesPerView: 1.1 },
-                  768: { slidesPerView: 2 },
-                  1024: { slidesPerView: 2 },
-                  1280: { slidesPerView: 3 },
-                }}
-                className="py-4"
-                style={{ maxWidth: "100%" }}
-              >
+              {/* Swiper for md and up */}
+              <div className="hidden md:block">
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  spaceBetween={24}
+                  slidesPerView={1}
+                  navigation={{
+                    nextEl: ".custom-swiper-next",
+                    prevEl: ".custom-swiper-prev",
+                  }}
+                  pagination={{ clickable: true }}
+                  breakpoints={{
+                    640: { slidesPerView: 1.1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 2 },
+                    1280: { slidesPerView: 3 },
+                  }}
+                  className="py-4"
+                  style={{ maxWidth: "100%" }}
+                >
+                  {properties.map((property) => (
+                    <SwiperSlide key={property.id}>
+                      {/* ...existing code for property card... */}
+                      <div
+                        className="bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer flex-shrink-0 w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto transition-all duration-300 border border-teal-100 hover:shadow-2xl"
+                        style={{ minWidth: 0 }}
+                        onClick={() => openPropertyModal(property)}
+                      >
+                        {/* ...existing code for property card... */}
+                        <div className="relative">
+                          <img
+                            src={property.image || "/placeholder.svg"}
+                            alt={property.title}
+                            className="w-full h-56 object-cover"
+                          />
+                          <div className="absolute top-4 left-4">
+                            <span
+                              className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                                property.type === "FOR SALE"
+                                  ? "bg-teal-800 text-white"
+                                  : "bg-teal-800 text-white"
+                              }`}
+                            >
+                              {property.type}
+                            </span>
+                          </div>
+                          {property.featured && (
+                            <div className="absolute top-4 right-4">
+                              <span className="bg-yellow text-black px-3 py-1 rounded-full text-xs font-semibold shadow">
+                                FEATURED
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-6 flex flex-col gap-2">
+                          <h3 className="text-xl font-bold mb-1 text-gray-900 tracking-tight">
+                            {property.title}
+                          </h3>
+                          <div className="flex items-center text-gray-600 mb-2">
+                            <MapPin className="w-4 h-4 mr-2" />
+                            <span className="text-sm font-medium">
+                              {property.location}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-2">
+                            <div className="flex items-center">
+                              <Bed className="w-4 h-4 mr-1 text-teal-700" />
+                              <span>{property.beds} Bed</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Bath className="w-4 h-4 mr-1 text-teal-700" />
+                              <span>{property.baths} Bath</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Square className="w-4 h-4 mr-1 text-teal-700" />
+                              <span>{property.sqft} Plot</span>
+                            </div>
+                            {/* Example: Kitchens, Drawing/Dining */}
+                            {property.kitchens && (
+                              <div className="flex items-center">
+                                <span className="font-medium">
+                                  {property.kitchens} Kitchen
+                                </span>
+                              </div>
+                            )}
+                            {property.drawingDining && (
+                              <div className="flex items-center">
+                                <span className="font-medium">
+                                  {property.drawingDining} Drawing/Dining
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex w-full justify-between items-center">
+                            {/* Islamabad Link Branding at the bottom */}
+                            <div className="flex items-center gap-2 px-3 py-2 rounded-lg border">
+                              <img
+                                src="/Logo.png"
+                                className="w-5 h-5"
+                                alt="Islamabad Link Logo"
+                              />
+                              <span className="text-sm font-bold text-teal-900">
+                                Islamabad Link
+                              </span>
+                            </div>
+                            <button
+                              className="bg-yellow text-black font-bold px-6 py-2 rounded-lg"
+                              onClick={() => openPropertyModal(property)}
+                            >
+                              See More
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                {/* Custom Navigation Buttons - must be outside Swiper for Swiper to find them */}
+                <button
+                  className="custom-swiper-prev hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 text-md text-black p-3 rounded-full cursor-pointer bg-yellow font-bold shadow-lg"
+                  tabIndex={0}
+                  aria-label="Previous slide"
+                  style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  className="custom-swiper-next hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 text-md text-black p-3 rounded-full cursor-pointer bg-yellow font-bold shadow-lg"
+                  tabIndex={0}
+                  aria-label="Next slide"
+                  style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+              {/* Flex-col for small screens */}
+              <div className="flex flex-col gap-6 md:hidden">
                 {properties.map((property) => (
-                  <SwiperSlide key={property.id}>
-                    <div
-                      className="bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer flex-shrink-0 w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto transition-all duration-300 border border-teal-100 hover:shadow-2xl"
-                      style={{ minWidth: 0 }}
-                      onClick={() => openPropertyModal(property)}
-                    >
-                      <div className="relative">
-                        <img
-                          src={property.image || "/placeholder.svg"}
-                          alt={property.title}
-                          className="w-full h-56 object-cover"
-                        />
-                        <div className="absolute top-4 left-4">
-                          <span
-                            className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                              property.type === "FOR SALE"
-                                ? "bg-teal-800 text-white"
-                                : "bg-teal-800 text-white"
-                            }`}
-                          >
-                            {property.type}
+                  <div
+                    key={property.id}
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer flex-shrink-0 w-full mx-auto transition-all duration-300 border border-teal-100 hover:shadow-2xl"
+                    onClick={() => openPropertyModal(property)}
+                  >
+                    <div className="relative">
+                      <img
+                        src={property.image || "/placeholder.svg"}
+                        alt={property.title}
+                        className="w-full h-56 object-cover"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                            property.type === "FOR SALE"
+                              ? "bg-teal-800 text-white"
+                              : "bg-teal-800 text-white"
+                          }`}
+                        >
+                          {property.type}
+                        </span>
+                      </div>
+                      {property.featured && (
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-yellow text-black px-3 py-1 rounded-full text-xs font-semibold shadow">
+                            FEATURED
                           </span>
                         </div>
-                        {property.featured && (
-                          <div className="absolute top-4 right-4">
-                            <span className="bg-yellow text-black px-3 py-1 rounded-full text-xs font-semibold shadow">
-                              FEATURED
+                      )}
+                    </div>
+                    <div className="p-6 flex flex-col gap-2">
+                      <h3 className="text-xl font-bold mb-1 text-gray-900 tracking-tight">
+                        {property.title}
+                      </h3>
+                      <div className="flex items-center text-gray-600 mb-2">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        <span className="text-sm font-medium">
+                          {property.location}
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-2">
+                        <div className="flex items-center">
+                          <Bed className="w-4 h-4 mr-1 text-teal-700" />
+                          <span>{property.beds} Bed</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Bath className="w-4 h-4 mr-1 text-teal-700" />
+                          <span>{property.baths} Bath</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Square className="w-4 h-4 mr-1 text-teal-700" />
+                          <span>{property.sqft} Plot</span>
+                        </div>
+                        {/* Example: Kitchens, Drawing/Dining */}
+                        {property.kitchens && (
+                          <div className="flex items-center">
+                            <span className="font-medium">
+                              {property.kitchens} Kitchen
+                            </span>
+                          </div>
+                        )}
+                        {property.drawingDining && (
+                          <div className="flex items-center">
+                            <span className="font-medium">
+                              {property.drawingDining} Drawing/Dining
                             </span>
                           </div>
                         )}
                       </div>
-                      <div className="p-6 flex flex-col gap-2">
-                        <h3 className="text-xl font-bold mb-1 text-gray-900 tracking-tight">
-                          {property.title}
-                        </h3>
-                        <div className="flex items-center text-gray-600 mb-2">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          <span className="text-sm font-medium">
-                            {property.location}
+                      <div className="flex w-full justify-between items-center">
+                        {/* Islamabad Link Branding at the bottom */}
+                        <div className="flex items-center gap-2 px-3 py-2 rounded-lg border">
+                          <img
+                            src="/Logo.png"
+                            className="w-5 h-5"
+                            alt="Islamabad Link Logo"
+                          />
+                          <span className="text-sm font-bold text-teal-900">
+                            Islamabad Link
                           </span>
                         </div>
-                        <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-2">
-                          <div className="flex items-center">
-                            <Bed className="w-4 h-4 mr-1 text-teal-700" />
-                            <span>{property.beds} Bed</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Bath className="w-4 h-4 mr-1 text-teal-700" />
-                            <span>{property.baths} Bath</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Square className="w-4 h-4 mr-1 text-teal-700" />
-                            <span>{property.sqft} Plot</span>
-                          </div>
-                          {/* Example: Kitchens, Drawing/Dining */}
-                          {property.kitchens && (
-                            <div className="flex items-center">
-                              <span className="font-medium">
-                                {property.kitchens} Kitchen
-                              </span>
-                            </div>
-                          )}
-                          {property.drawingDining && (
-                            <div className="flex items-center">
-                              <span className="font-medium">
-                                {property.drawingDining} Drawing/Dining
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex w-full justify-between items-center">
-                          {/* Islamabad Link Branding at the bottom */}
-                          <div className="flex items-center gap-2 px-3 py-2 rounded-lg border">
-                            <img
-                              src="/Logo.png"
-                              className="w-5 h-5"
-                              alt="Islamabad Link Logo"
-                            />
-                            <span className="text-sm font-bold text-teal-900">
-                              Islamabad Link
-                            </span>
-                          </div>
-                          <button
-                            className="bg-yellow text-black font-bold px-6 py-2 rounded-lg"
-                            onClick={() => openPropertyModal(property)}
-                          >
-                            See More
-                          </button>
-                        </div>
+                        <button
+                          className="bg-yellow text-black font-bold px-6 py-2 rounded-lg"
+                          onClick={() => openPropertyModal(property)}
+                        >
+                          See More
+                        </button>
                       </div>
                     </div>
-                  </SwiperSlide>
+                  </div>
                 ))}
-              </Swiper>
-              {/* Custom Navigation Buttons - must be outside Swiper for Swiper to find them */}
-              <button
-                className="custom-swiper-prev hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 text-md text-black p-3 rounded-full cursor-pointer bg-yellow font-bold shadow-lg"
-                tabIndex={0}
-                aria-label="Previous slide"
-                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button
-                className="custom-swiper-next hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 text-md text-black p-3 rounded-full cursor-pointer bg-yellow font-bold shadow-lg"
-                tabIndex={0}
-                aria-label="Next slide"
-                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
+              </div>
             </div>
           </div>
         </section>
@@ -360,7 +460,7 @@ export default function FeaturedProperties({ id }) {
                       />
                       <div className="flex flex-col">
                         <span className="text-base font-semibold text-gray-900">
-                          Syed Aqeel Haider Kazmi
+                          Aqeel Haider Kazmi
                         </span>
                         <span className="text-xs text-teal-700">CEO</span>
                         <span className="text-sm text-teal-900 font-medium">

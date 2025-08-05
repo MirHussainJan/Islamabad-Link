@@ -49,7 +49,7 @@ export default function BecomeAgent({ id }) {
               <div className="relative mb-3 sm:mb-4">
                 <img
                   src="/CEO.png"
-                  alt="CEO Syed Aqeel Haider Kazmi"
+                  alt="CEO Aqeel Haider Kazmi"
                   className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 object-cover rounded-full border-2 sm:border-4 border-yellow shadow-xl sm:shadow-2xl"
                 />
                 {/* Online indicator */}
