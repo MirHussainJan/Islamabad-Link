@@ -5,13 +5,21 @@ export default function RecentHighlights() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  // Get current month and year
+  const now = new Date();
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  const currentMonthYear = `${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+
   const featuredVideo = {
     id: 1,
-    src: "https://www.w3schools.com/html/mov_bbb.mp4",
+    src: "/VID-20250806-WA0003.mp4",
     thumbnail: "/1.jpeg",
     title: "Luxury Development Showcase",
     subtitle: "Islamabad Link's Premier Real Estate Collection",
-    date: "August 2025",
+    date: currentMonthYear,
     duration: "3:38",
     views: "8.1K"
   };
@@ -35,7 +43,7 @@ export default function RecentHighlights() {
       <div className="container mx-auto px-6 relative">
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-5xl lg:text-6xl font-bold text-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
             Latest Showcase
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
