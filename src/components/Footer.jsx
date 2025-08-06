@@ -1,7 +1,7 @@
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <div className="container mx-auto bg-teal-800 text-white">
+    <div className="mx-auto bg-teal-800 text-white">
       <div className="p-4 text-center">
         <a href="#" className="flex flex-col items-center mb-3">
           <img
