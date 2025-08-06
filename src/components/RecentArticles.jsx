@@ -40,7 +40,7 @@ export default function RecentHighlights() {
   return (
     <section className="relative py-16 overflow-hidden">
 
-      <div className="container mx-auto px-6 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
@@ -52,10 +52,10 @@ export default function RecentHighlights() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch xl:gap-12">
           {/* Left Stats Panel */}
-          <div className="lg:col-span-4 xl:col-span-3">
-            <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/50 shadow-xl hover:shadow-2xl transition-all duration-500">
+          <div className="lg:col-span-4 xl:col-span-3 flex items-stretch">
+            <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/50 shadow-xl hover:shadow-2xl transition-all duration-500 w-full h-full flex flex-col justify-center">
               <div className="">
                 <h3 className="text-2xl text-center font-bold text-slate-800">Recent Activity</h3>
               </div>
@@ -79,20 +79,20 @@ export default function RecentHighlights() {
           </div>
 
           {/* Center Video */}
-          <div className="lg:col-span-8 xl:col-span-9">
-            <div className="relative group">
+          <div className="lg:col-span-8 xl:col-span-9 flex items-center justify-center">
+            <div className="relative group w-full max-w-4xl xl:max-w-5xl">
               {/* Main Video Container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-800 to-slate-900 hover:shadow-3xl transition-all duration-500">
-                <div className="aspect-video relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-800 to-slate-900 hover:shadow-3xl transition-all duration-500 w-full">
+                <div className="aspect-video relative w-full">
                   <img
                     src={featuredVideo.thumbnail}
                     alt={featuredVideo.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Branding Overlay */}
-                  <div className="absolute top-6 left-6 flex items-center gap-3 z-10 bg-teal-800/30 rounded-xl backdrop-blur-md px-4 py-2">
-                    <img src="/Logo.png" alt="Islamabad Link Logo" className="w-12 h-12" />
-                    <span className="text-white text-xl font-bold drop-shadow-lg tracking-wide">Islamabad Link</span>
+                  <div className="absolute top-3 left-3 sm:top-6 sm:left-6 flex items-center gap-2 sm:gap-3 z-10 bg-teal-800/30 rounded-xl backdrop-blur-md px-2 py-1 sm:px-4 sm:py-2">
+                    <img src="/Logo.png" alt="Islamabad Link Logo" className="w-8 h-8 sm:w-12 sm:h-12" />
+                    <span className="text-white text-base sm:text-xl font-bold drop-shadow-lg tracking-wide">Islamabad Link</span>
                   </div>
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -100,31 +100,31 @@ export default function RecentHighlights() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <button
                       onClick={handleVideoPlay}
-                      className="group-hover:scale-110 transition-all duration-500 bg-white/90 cursor-pointer backdrop-blur-sm p-8 rounded-full shadow-2xl hover:bg-white hover:shadow-3xl transform hover:-translate-y-2"
+                      className="group-hover:scale-110 transition-all duration-500 bg-white/90 cursor-pointer backdrop-blur-sm p-4 sm:p-8 rounded-full shadow-2xl hover:bg-white hover:shadow-3xl transform hover:-translate-y-2"
                     >
-                      <Play className="w-12 h-12 text-yellow ml-2" fill="currentColor" />
+                      <Play className="w-7 h-7 sm:w-12 sm:h-12 text-yellow ml-1 sm:ml-2" fill="currentColor" />
                     </button>
                   </div>
 
                   {/* Video Stats */}
-                  <div className="absolute top-6 right-6 flex gap-3">
-                    <div className="bg-teal-800 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
+                  <div className="absolute top-3 right-3 sm:top-6 sm:right-6 flex gap-2 sm:gap-3">
+                    <div className="bg-teal-800 backdrop-blur-sm text-white px-2 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
                       {featuredVideo.duration}
                     </div>
-                    <div className="bg-teal-800 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2">
-                      <Eye className="w-4 h-4" />
+                    <div className="bg-teal-800 backdrop-blur-sm text-white px-2 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2">
+                      <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
                       {featuredVideo.views}
                     </div>
                   </div>
 
                   {/* Video Info */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <div className="flex items-center gap-2 text-yellow text-sm mb-4">
-                      <Calendar className="w-4 h-4" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
+                    <div className="flex items-center gap-1 sm:gap-2 text-yellow text-xs sm:text-sm mb-2 sm:mb-4">
+                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span className="font-medium">{featuredVideo.date}</span>
                     </div>
-                    <h3 className="text-white text-4xl font-bold mb-3 leading-tight">{featuredVideo.title}</h3>
-                    <p className="text-white/80 text-xl leading-relaxed">{featuredVideo.subtitle}</p>
+                    <h3 className="text-white text-2xl sm:text-4xl font-bold mb-2 sm:mb-3 leading-tight">{featuredVideo.title}</h3>
+                    <p className="text-white/80 text-base sm:text-xl leading-relaxed">{featuredVideo.subtitle}</p>
                   </div>
                 </div>
               </div>
