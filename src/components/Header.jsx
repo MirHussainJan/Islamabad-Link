@@ -45,8 +45,9 @@ export default function Header() {
       `}</style>
       <div
         className={`
-          ${scrolled ? "w-[90%] py-4 bg-teal-800/30 backdrop-blur-xl shadow-xl" : "w-full pt-4 bg-teal-800"}
-          transition-all duration-300 mx-auto px-6 rounded-xl`}
+          ${scrolled ? "w-[95vw] max-w-[1200px] py-4 bg-teal-800/30 backdrop-blur-xl shadow-xl" : "w-full pt-4 bg-teal-800"}
+          transition-all duration-300 mx-auto px-2 sm:px-4 md:px-6 rounded-xl overflow-x-hidden`}
+        style={{maxWidth: '100vw'}}
       >
         <div className={`flex items-center justify-between ${scrolled ? "flex-row" : ""}`}>
           {/* Logo */}
