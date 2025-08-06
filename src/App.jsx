@@ -78,7 +78,7 @@ const App = () => {
 
                   <div className="bg-white/90 backdrop-blur-sm px-3 sm:px-4 lg:px-6 py-2 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl text-center max-w-xs mx-2">
                     <span className="text-sm sm:text-base lg:text-lg font-bold text-teal-900 block">
-                      Syed Aqeel Haider Kazmi
+                      Aqeel Haider Kazmi
                     </span>
                     <div className="text-xs sm:text-sm text-teal-700 font-semibold mb-1 sm:mb-2">
                       CEO
